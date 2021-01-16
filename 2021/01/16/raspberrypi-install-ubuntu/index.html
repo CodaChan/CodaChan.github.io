@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Coda&#39;s Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="The Journey of Coda">
-<meta property="og:url" content="http://example.com/sitemap/index.html">
+  <meta name="description" content="闲来无事买了个树莓派4B4G回来，记录一下安装系统的过程和一些配置过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派4B安装Ubuntu20.04.1 LTS">
+<meta property="og:url" content="http://example.com/2021/01/16/raspberrypi-install-ubuntu/index.html">
 <meta property="og:site_name" content="The Journey of Coda">
-<meta property="og:description" content="Coda&#39;s Blog">
+<meta property="og:description" content="闲来无事买了个树莓派4B4G回来，记录一下安装系统的过程和一些配置过程。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-25T01:11:51.000Z">
-<meta property="article:modified_time" content="2020-12-25T01:12:36.930Z">
+<meta property="article:published_time" content="2021-01-16T12:43:21.000Z">
+<meta property="article:modified_time" content="2021-01-16T15:54:02.148Z">
 <meta property="article:author" content="Coda">
+<meta property="article:tag" content="RaspberryPi">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/sitemap/">
+<link rel="canonical" href="http://example.com/2021/01/16/raspberrypi-install-ubuntu/">
 
 
 <script id="page-configurations">
@@ -40,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title> | The Journey of Coda
-</title>
+  <title>树莓派4B安装Ubuntu20.04.1 LTS | The Journey of Coda</title>
   
 
 
@@ -159,43 +159,120 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/16/raspberrypi-install-ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Coda">
+      <meta itemprop="description" content="Coda's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Journey of Coda">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          树莓派4B安装Ubuntu20.04.1 LTS
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2021-01-16 20:43:21 / 修改时间：23:54:02" itemprop="dateCreated datePublished" datetime="2021-01-16T20:43:21+08:00">2021-01-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>闲来无事买了个树莓派4B4G回来，记录一下安装系统的过程和一些配置过程。</strong></p>
+<a id="more"></a>
+
+<h2 id="1-安装系统"><a href="#1-安装系统" class="headerlink" title="1.安装系统"></a>1.安装系统</h2><p>首先去<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/software/">树莓派官网</a>下载并安装Raspberry Pi Imager，用于烧录系统镜像。</p>
+<p>之后去<a target="_blank" rel="noopener" href="https://ubuntu.com/download/raspberry-pi">Ubuntu for RaspberryPi</a>下载Ubuntu Server 20.04.1 LTS镜像。</p>
+<p>打开安装好的Raspberry Pi Imager，选择下载的镜像和TF卡，开始烧录。</p>
+<p>烧录完成后会自动推出TF卡，需要重新拔插，并编辑system-boot盘中的network-config文件，</p>
+<p>找到如下段落，取消其注释，并替换<code>&lt;wifi network name&gt;</code>和<code>&lt;wifi password&gt;</code>为你的wifi账号密码。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wifis:</span></span><br><span class="line">  <span class="attr">wlan0:</span></span><br><span class="line">  <span class="attr">dhcp4:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">optional:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">access-points:</span></span><br><span class="line">    <span class="string">&lt;wifi</span> <span class="string">network</span> <span class="string">name&gt;:</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">&quot;&lt;wifi password&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>之后拔出TF卡，插入树莓派的卡槽中，启动机器，等待机器初始化10分钟左右。</p>
+<p>在路由器后台找到名为<code>ubuntu</code>的树莓派设备，记住它的ip地址，使用ssh连接到树莓派。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh ubuntu@树莓派的ip地址</span><br></pre></td></tr></table></figure>
+<p>如果是用macOS的Terminal连接ssh，此处会有一个[yes/no/…]，填写yes并回车即可。</p>
+<p>提示输入默认密码，默认密码为<code>ubuntu</code>，连接成功后会让你立即输入并重新输入新密码。</p>
+<h2 id="2-更改设备名、默认用户名和密码"><a href="#2-更改设备名、默认用户名和密码" class="headerlink" title="2.更改设备名、默认用户名和密码"></a>2.更改设备名、默认用户名和密码</h2><p>更改ssh登陆设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>把文件中的PermitRootLogin一项更改为yes。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">PermitRootLogin</span> <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
+<p>设置root账户密码，输入以下指令后会提示输入root账户新密码，输入后再回车设置完成。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
+<p>解锁root账户。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd --unlock root</span><br></pre></td></tr></table></figure>
+<p>编辑hostname文件，将ubuntu改为你想要的设备名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/hostname</span><br></pre></td></tr></table></figure>
+<p>重启树莓派。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>用root账户再次ssh连接树莓派，和第一次用ubuntu连接一样，不过输入的密码是刚才设置的root账户密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@树莓派的ip地址</span><br></pre></td></tr></table></figure>
+<p>修改用户名为coda。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -l coda ubuntu</span><br></pre></td></tr></table></figure>
+<p>修改组名为coda。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod -n coda ubuntu</span><br></pre></td></tr></table></figure>
+<p>修改用户目录名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /home/ubuntu /home/coda</span><br></pre></td></tr></table></figure>
+<p>把～引导到新的用户目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /home/coda coda</span><br></pre></td></tr></table></figure>
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RaspberryPi/" rel="tag"># RaspberryPi</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/05/capriccio-2021-1/" rel="prev" title="2021.1 随想">
+      <i class="fa fa-chevron-left"></i> 2021.1 随想
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -246,6 +323,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">1.安装系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%9B%B4%E6%94%B9%E8%AE%BE%E5%A4%87%E5%90%8D%E3%80%81%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">2.更改设备名、默认用户名和密码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
